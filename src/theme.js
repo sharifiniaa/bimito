@@ -1,6 +1,25 @@
 import {createMuiTheme} from '@material-ui/core';
 
 const theme = createMuiTheme({
+    direction: "rtl",
+    overrides: {
+        MuiButton: {
+            containedSecondary: {
+                borderRadius: '23px',
+            },
+            containedSizeLarge: {
+                padding: '8px 40px'
+            },
+        },
+        MuiFormHelperText: {
+            root: {
+                "&$error": {
+                    "position": "absolute"
+                }
+            }
+        },
+
+    },
     palette: {
         secondary: {
             main: '#28b5b5',
@@ -10,7 +29,6 @@ const theme = createMuiTheme({
     typography: {
         fontFamily: 'IRANSans'
     },
-    direction: 'rtl',
 });
 
 export default theme;

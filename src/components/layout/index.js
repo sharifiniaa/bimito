@@ -19,8 +19,8 @@ const useStyles = makeStyles((theme) =>
             backgroundColor: '#fffbeb'
         },
         rightSide: {
-            padding: '24px 24px 0 60px !important',
-            marginTop: theme.spacing(15)
+            padding: '24px 24px 0 100px !important',
+            marginTop: theme.spacing(10)
         },
         backgroundImage: {
             backgroundImage: "url('images/car-green.svg')",
@@ -29,8 +29,8 @@ const useStyles = makeStyles((theme) =>
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'bottom right',
             position: 'absolute',
-            transform: 'scale(0.7)',
-            right: '35px',
+            transform: 'scale(0.5)',
+            right: '100px',
             bottom: '40px',
             transformOrigin: 'bottom right'
         }

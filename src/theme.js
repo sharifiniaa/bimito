@@ -5,7 +5,10 @@ const theme = createMuiTheme({
         secondary: {
             main: '#28b5b5',
             contrastText: '#fff',
-          },
+        },
+    },
+    typography: {
+        fontFamily: 'IRANSans'
     },
     direction: 'rtl',
 });

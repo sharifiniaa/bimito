@@ -3,7 +3,9 @@ import reducer from './reducer';
 import {AuthContext} from './context';
 
 const initialState = {
-    name: null
+    user: {
+        name: null
+    }
 }
 
 const AuthProvider = ({children}) => {

@@ -1,9 +1,10 @@
 import React from 'react';
 import {createStyles, Grid, makeStyles, Icon, Typography} from "@material-ui/core";
+import {useAuthContext} from "../../context/context";
 
 
 //styles
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme) =>
     createStyles({
             toolbarWrapper: {
                 display: 'flex',
@@ -37,13 +38,18 @@ const useStyles = makeStyles(() =>
                 marginLeft: '0.85rem'
             },
             title: {
-                fontWeight: 'bold'
+                fontWeight: 'bold',
+                [theme.breakpoints.down('xs')]: {
+                    display: 'none'
+                }
             }
         }
     )
 )
 
-const Toolbar = ({login = true}) => {
+const Toolbar = () => {
+    const {state} = useAuthContext();
+    const {user} = state;
     const classes = useStyles()
     return (
         <div className={classes.toolbarWrapper}>
@@ -55,13 +61,13 @@ const Toolbar = ({login = true}) => {
                     سامانه مقایسه و خرید آنلاین بیمه
                 </Typography>
                 <Grid item className={classes.user}>
-                    {login && (
+                    {user.name && (
                         <Icon className={classes.iconRoot}>
                             <img src="images/user.svg" className={classes.imageIcon} alt="user"/>
                         </Icon>
                     )}
                     <Typography className={classes.userTitle} component='span' variant='body1'>
-                        {login ? 'رضا صادقی' : 'ثبت نام'}
+                        {user.name ? user.name : 'ثبت نام'}
                     </Typography>
                 </Grid>
             </Grid>

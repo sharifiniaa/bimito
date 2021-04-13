@@ -2,16 +2,21 @@ import React from 'react';
 import {Container, makeStyles, createStyles} from '@material-ui/core';
 import {BrowserRouter as Router, Switch} from 'react-router-dom';
 
-// pages
-import Main from './pages/signUp';
-import RouteHoc from "./utils/Route";
 import AuthProvider from "./context/provider";
+import {PublicRoute, PrivateRoute} from "./utils/Route";
 
-const useStyles = makeStyles(() =>
+// pages
+import SignUp from './pages/signUp';
+import Insurance from "./pages/insurance";
+
+const useStyles = makeStyles((theme) =>
     createStyles({
         container: {
             height: '100%',
             padding: '24px',
+            [theme.breakpoints.down('xs')]: {
+                height: 'unset'
+            }
         },
     })
 )
@@ -23,7 +28,8 @@ const App = () => {
             <Router>
                 <Switch>
                     <AuthProvider>
-                        <RouteHoc path='/' component={Main}/>
+                        <PrivateRoute path='/insurance' exact component={Insurance}/>
+                        <PublicRoute path='/' exact component={SignUp}/>
                     </AuthProvider>
                 </Switch>
             </Router>

@@ -10,6 +10,12 @@ const theme = createMuiTheme({
             containedSizeLarge: {
                 padding: '8px 40px'
             },
+            outlinedSecondary: {
+                borderRadius: '23px',
+            },
+            outlinedSizeLarge: {
+                padding: '8px 40px'
+            }
         },
         MuiFormHelperText: {
             root: {

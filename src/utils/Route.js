@@ -1,18 +1,19 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Redirect} from 'react-router-dom';
 import Layout from '../components/layout'
+import {useAuthContext} from "../context/context";
 
 
 const LayoutHoc = (props) => {
     const {component: Component, ...rest} = props;
     return (
         <Layout>
-                <Component {...rest} />
+            <Component {...rest} />
         </Layout>
     )
 }
 
-const RouteHoc = ({component: Component, type, ...rest}) => {
+const PublicRoute = ({component: Component, type, ...rest}) => {
     return (
         <Route
             {...rest}
@@ -20,4 +21,22 @@ const RouteHoc = ({component: Component, type, ...rest}) => {
         />
     )
 }
-export default RouteHoc;
+
+const PrivateRoute = ({component: Component, type, ...rest}) => {
+    const {state} = useAuthContext();
+
+    if (state.user.name) {
+        return (
+            <Route
+                {...rest}
+                render={matchProps => <LayoutHoc {...matchProps} component={Component}/>}
+            />
+        )
+    } else {
+        return <Redirect to='/'/>
+    }
+}
+
+export {PublicRoute, PrivateRoute}
+
+

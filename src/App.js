@@ -3,8 +3,9 @@ import {Container, makeStyles, createStyles} from '@material-ui/core';
 import {BrowserRouter as Router, Switch} from 'react-router-dom';
 
 // pages
-import Main from './pages/main';
+import Main from './pages/signUp';
 import RouteHoc from "./utils/Route";
+import AuthProvider from "./context/provider";
 
 const useStyles = makeStyles(() =>
     createStyles({
@@ -21,7 +22,9 @@ const App = () => {
         <Container maxWidth="xl" className={classes.container}>
             <Router>
                 <Switch>
-                    <RouteHoc path='/' component={Main}/>
+                    <AuthProvider>
+                        <RouteHoc path='/' component={Main}/>
+                    </AuthProvider>
                 </Switch>
             </Router>
         </Container>
